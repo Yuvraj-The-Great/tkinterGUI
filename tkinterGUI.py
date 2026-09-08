@@ -2,15 +2,19 @@
 #https://tkinterdocs.online/#
 #https://docs.python.org/3/library/tkinter.html
 
+#Pillow library transforming image to fit and rotating, needed to pip install pillow
+#https://pillow.readthedocs.io/en/stable/reference/ImageTransform.html
+#https://pillow.readthedocs.io/en/stable/reference/Image.html
+#https://pillow.readthedocs.io/en/stable/reference/ImageTk.html Works with tkinter
+
+from PIL import Image #for resizing and rotating arrow images to meet test
+from PIL import ImageTk #for converting to tk file
+
 import tkinter
 from tkinter import ttk
-
-print("Hello world")
-
-#tkinter root window definition
-
 import tkinter as tk
 
+#tkinter root window definition
 root = tk.Tk()
 root.title("Tkinter Robot GUI")
 root.geometry("1920x1080")  # Width x Height
@@ -31,7 +35,13 @@ topRightInner = ttk.Frame(topRight, borderwidth=50)
 topRightInner.pack(anchor="center",expand= True)
 
 #controls
-arrowPhoto = None 
+#arrow photo resizing and rotating with pillow
+arrowImage = None 
+with Image.open("arrow.png") as arrowRaw:
+    arrowImage = arrowRaw.resize((50,50))
+
+arrowPhoto = ImageTk.PhotoImage(arrowImage)
+
 arrow1 = ttk.Button(topRightInner,image=arrowPhoto)
 arrow1.grid(columnspan=2,column=1,row=0)
 
@@ -84,7 +94,7 @@ root.grid_rowconfigure(1, weight=1)
 
 root.grid_columnconfigure(0, weight=1)
 root.grid_columnconfigure(1, weight=1)
-
+1
 
 #mainloop must be at end
 root.mainloop()
