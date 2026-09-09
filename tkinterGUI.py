@@ -23,7 +23,7 @@ root.geometry("1920x1080")  # Width x Height
 topLeft = ttk.Frame(root, borderwidth=50,relief='sunken')
 topLeft.grid(row=0,column=0,sticky="nsew")
 
-text = ttk.Label(topLeft, text = "Video Placeholder 1")
+text = ttk.Label(topLeft, text = "Video Placeholder One")
 text.pack(expand=True)
 
 #frame 2 (controls)
@@ -35,32 +35,56 @@ topRightInner = ttk.Frame(topRight, borderwidth=50)
 topRightInner.pack(anchor="center",expand= True)
 
 #controls
+
 #arrow photo resizing and rotating with pillow
 arrowImage = None 
 with Image.open("arrow.png") as arrowRaw:
-    arrowImage = arrowRaw.resize((50,50))
+    arrowImage = arrowRaw.resize((70,50)) 
+
+    #north south east west
+    arrowImage1 = arrowImage.rotate(90, expand=True) #expand very important, expands image canvas to new size
+    arrowImage2 = arrowImage.rotate(270, expand = True)
+    arrowImage3 = arrowImage.rotate(180, expand = True)
 
 arrowPhoto = ImageTk.PhotoImage(arrowImage)
 
-arrow1 = ttk.Button(topRightInner,image=arrowPhoto)
-arrow1.grid(columnspan=2,column=1,row=0)
+#conversion from pil image to tkinter system
+arrowPhoto1 = ImageTk.PhotoImage(arrowImage1)
+arrowPhoto2 = ImageTk.PhotoImage(arrowImage2)
+arrowPhoto3 = ImageTk.PhotoImage(arrowImage3)
+arrowPhoto4 = ImageTk.PhotoImage(arrowImage)
 
-arrow2 = ttk.Button(topRightInner,image=arrowPhoto)
-arrow2.grid(column=0,row=1)
+#pause and play button resizing and conversion to Tkinter image
+pausePhoto = None
+playPhoto = None
+
+with Image.open("pause_button.png") as pauseRaw:
+    pauseRaw = pauseRaw.resize((65,65))
+    pausePhoto = ImageTk.PhotoImage(pauseRaw)
+
+with Image.open("play_button.png") as playRaw:
+    playRaw = playRaw.resize((65,65))
+    playPhoto = ImageTk.PhotoImage(playRaw)
+
+arrow1 = ttk.Button(topRightInner,image=arrowPhoto1) #north
+arrow1.grid(columnspan=2,column=1,row=0, padx=10, pady= 10, ipadx=5, ipady=5)
+
+arrow2 = ttk.Button(topRightInner,image=arrowPhoto3) #east
+arrow2.grid(column=0,row=1, padx=10, pady= 10, ipadx=5, ipady=5)
 
 stopImage = None
-stopButton = ttk.Button(topRightInner, image=stopImage)
-stopButton.grid(column=1,row=1)
+stopButton = ttk.Button(topRightInner, image=pausePhoto) 
+stopButton.grid(column=1,row=1, padx=10, pady= 10, ipadx=5, ipady=5)
 
 startImage = None
-startButton = ttk.Button(topRightInner, image=startImage)
-startButton.grid(column=2,row=1)
+startButton = ttk.Button(topRightInner, image=playPhoto)
+startButton.grid(column=2,row=1, padx=10, pady= 10, ipadx=5, ipady=5)
 
-arrow3 = ttk.Button(topRightInner, image=arrowPhoto)
-arrow3.grid(column=3,row=1)
+arrow3 = ttk.Button(topRightInner, image=arrowPhoto4) #west
+arrow3.grid(column=3,row=1, padx=10, pady= 10, ipadx=5, ipady=5)
 
-arrow4 = ttk.Button(topRightInner, image=arrowPhoto)
-arrow4.grid(columnspan=2,column=1,row=2)
+arrow4 = ttk.Button(topRightInner, image=arrowPhoto2)
+arrow4.grid(columnspan=2,column=1,row=2, padx=10, pady= 10, ipadx=5, ipady=5) #south
 
 #column and row configurations for sizing again :(
 topRightInner.grid_rowconfigure(0, weight=1)
@@ -75,18 +99,22 @@ topRightInner.grid_columnconfigure(3, weight=1)
 bottomLeft = ttk.Frame(root, padding=10,borderwidth=50,relief='sunken')
 bottomLeft.grid(row=1,column=0,sticky="nsew")
 
-text3 = ttk.Label(bottomLeft, text = "Video Placeholder One")
+text3 = ttk.Label(bottomLeft, text = "Video Placeholder Two")
 text3.pack(expand=True)
 
 #frame 4
 bottomRight = ttk.Frame(root,relief='sunken')
 bottomRight.grid(row=1,column=1,sticky="nsew")
 
-text4 = ttk.Label(bottomRight, text = "User Log Placeholder")
-text4.pack(expand=True)
+centerbottomRight = ttk.Frame(bottomRight)
+centerbottomRight.pack(anchor="center",pady=(30,0)) #could not get this to auto center apart from manually
+                                                    #setting pady
 
-userLog = tk.Text(bottomRight)
-userLog.pack(expand=True)
+text4 = ttk.Label(centerbottomRight, text = "User Log Placeholder")
+text4.pack(pady=(30,30))
+
+userLog = tk.Text(centerbottomRight,width=40,height=10)
+userLog.pack(pady=(0,30))
 
 #column and row configurations for sizing
 root.grid_rowconfigure(0, weight=1)
