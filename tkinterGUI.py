@@ -7,8 +7,11 @@
 #https://pillow.readthedocs.io/en/stable/reference/Image.html
 #https://pillow.readthedocs.io/en/stable/reference/ImageTk.html Works with tkinter
 
-#forward when the up button is clicked
-@app.route("/up", methods=["POST"])
+#raspberry pi url
+pi_url = "127.0.0.1"
+import requests
+
+#forward when the up button is pressed
 def up():
     try:
         #Sends a JSON message to Raspi to Forward
@@ -19,19 +22,13 @@ def up():
         )
         response.raise_for_status()
 
-        #Reloads the page with a success message
-        return redirect(
-            "/index.html?message=Successfully%20Moved%20Forward!"
-        )
+        return "Success"
 
     #Returns the error message
     except requests.RequestException:
-        return jsonify({
-            "error": "could not connect to raspberry pi"
-        }), 503
+        return "Fail"
 
 #backward when the down button is clicked
-@app.route("/down", methods=["POST"])
 def down():
     try:
         #Sends a JSON message to Raspi to Backward
@@ -42,19 +39,13 @@ def down():
         )
         response.raise_for_status()
 
-        #Reloads the page with a success message
-        return redirect(
-            "/index.html?message=Successfully%20Moved%20Backward!"
-        )
-
+        return "Success"
+        
     #Returns the error message
     except requests.RequestException:
-        return jsonify({
-            "error": "could not connect to raspberry pi"
-        }), 503
-
+        return "Fail"
+    
 #right when the right button is clicked
-@app.route("/right", methods=["POST"])
 def right():
     try:
         #Sends a JSON message to Raspi to Right
@@ -65,19 +56,13 @@ def right():
         )
         response.raise_for_status()
 
-        #Reloads the page with a success message
-        return redirect(
-            "/index.html?message=Successfully%20Moved%20Right!"
-        )
-
+        return "Success"
+        
     #Returns the error message
     except requests.RequestException:
-        return jsonify({
-            "error": "could not connect to raspberry pi"
-        }), 503
-
+        return "Fail"
+    
 #left when the left button is clicked
-@app.route("/left", methods=["POST"])
 def left():
     try:
         #Sends a JSON message to Raspi to Left
@@ -88,19 +73,13 @@ def left():
         )
         response.raise_for_status()
 
-        #Reloads the page with a success message
-        return redirect(
-            "/index.html?message=Successfully%20Moved%20Left!"
-        )
-
+        return "Success"
+        
     #Returns the error message
     except requests.RequestException:
-        return jsonify({
-            "error": "could not connect to raspberry pi"
-        }), 503
-
+        return "Fail"
+    
 #play when the play button is clicked
-@app.route("/play", methods=["POST"])
 def play():
     try:
         #Sends a JSON message to Raspi to Play
@@ -111,19 +90,13 @@ def play():
         )
         response.raise_for_status()
 
-        #Reloads the page with a success message
-        return redirect(
-            "/index.html?message=Successfully%20Started!"
-        )
+        return "Success"
 
     #Returns the error message
     except requests.RequestException:
-        return jsonify({
-            "error": "could not connect to raspberry pi"
-        }), 503
+        return "Fail"
 
 #stop when the stop button is clicked
-@app.route("/stop", methods=["POST"])
 def stop():
     try:
         #Sends a JSON message to Raspi to Stop
@@ -134,17 +107,11 @@ def stop():
         )
         response.raise_for_status()
 
-        #Reloads the page with a success message
-        return redirect(
-            "/index.html?message=Successfully%20Stopped!"
-        )
-
+        return "Success"
+        
     #Returns the error message
     except requests.RequestException:
-        return jsonify({
-            "error": "could not connect to raspberry pi"
-        }), 503
-
+        return "Fail"
 
 def startGUI():
 
