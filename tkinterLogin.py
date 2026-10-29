@@ -27,7 +27,7 @@ cursor.execute("CREATE TABLE IF NOT EXISTS users (userID INTEGER PRIMARY KEY AUT
 #tkinter login window
 root = tk.Tk()
 root.title("Login Screen")
-root.geometry("300x200")
+root.geometry("300x200+200+200")
 
 main = ttk.Frame(root,relief="sunken",borderwidth=3)
 main.pack(anchor="center",padx=20,pady=20, expand=True,ipadx=20,ipady=20)
