@@ -22,12 +22,14 @@ def up():
         )
         response.raise_for_status()
 
+        print("Success")
         return "Success"
 
     #Returns the error message
     except requests.RequestException:
-        return "Fail"
-
+        print("Failed")
+        return "Failed"
+    
 #backward when the down button is clicked
 def down():
     try:
@@ -39,12 +41,14 @@ def down():
         )
         response.raise_for_status()
 
+        print("Success")
         return "Success"
         
     #Returns the error message
-    except requests.RequestException:
-        return "Fail"
-    
+    except requests.RequestException:    
+        print("Failed")
+        return "Failed"
+
 #right when the right button is clicked
 def right():
     try:
@@ -56,11 +60,13 @@ def right():
         )
         response.raise_for_status()
 
+        print("Success")
         return "Success"
         
     #Returns the error message
     except requests.RequestException:
-        return "Fail"
+        print("Failed")
+        return "Failed"
     
 #left when the left button is clicked
 def left():
@@ -73,12 +79,14 @@ def left():
         )
         response.raise_for_status()
 
+        print("Success")
         return "Success"
         
     #Returns the error message
     except requests.RequestException:
-        return "Fail"
-    
+        print("Failed")
+        return "Failed"
+        
 #play when the play button is clicked
 def play():
     try:
@@ -90,11 +98,13 @@ def play():
         )
         response.raise_for_status()
 
+        print("Success")
         return "Success"
 
     #Returns the error message
     except requests.RequestException:
-        return "Fail"
+        print("Failed")
+        return "Failed"
 
 #stop when the stop button is clicked
 def stop():
@@ -107,11 +117,13 @@ def stop():
         )
         response.raise_for_status()
 
+        print("Success")
         return "Success"
         
     #Returns the error message
     except requests.RequestException:
-        return "Fail"
+        print("Failed")
+        return "Failed"
 
 def startGUI():
 
