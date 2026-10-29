@@ -25,10 +25,10 @@ def startGUI():
     #tkinter root window definition
     root = tk.Tk()
     root.title("Tkinter Robot GUI")
-    root.geometry("1920x1080")  # Width x Height
+    root.geometry("900x800")  # Width x Height
 
     #frame 1 (video)
-    topLeft = ttk.Frame(root, borderwidth=50,relief='sunken')
+    topLeft = ttk.Frame(root,relief='sunken')
     topLeft.grid(row=0,column=0,sticky="nsew")
 
     text = ttk.Label(topLeft, text = "Video Placeholder One")
@@ -39,7 +39,7 @@ def startGUI():
     topRight.grid(row=0,column=1,sticky="nsew")
 
     #buffer frame for centering
-    topRightInner = ttk.Frame(topRight, borderwidth=50)
+    topRightInner = ttk.Frame(topRight)
     topRightInner.pack(anchor="center",expand= True)
 
     #controls
@@ -74,24 +74,24 @@ def startGUI():
         playRaw = playRaw.resize((65,65))
         playPhoto = ImageTk.PhotoImage(playRaw)
 
-    arrow1 = ttk.Button(topRightInner,image=arrowPhoto1) #north
+    arrow1 = tk.Button(topRightInner,image=arrowPhoto1) #north
     arrow1.grid(columnspan=2,column=1,row=0, padx=10, pady= 10, ipadx=5, ipady=5)
 
-    arrow2 = ttk.Button(topRightInner,image=arrowPhoto3) #east
+    arrow2 = tk.Button(topRightInner,image=arrowPhoto3) #east
     arrow2.grid(column=0,row=1, padx=10, pady= 10, ipadx=5, ipady=5)
 
     stopImage = None
-    stopButton = ttk.Button(topRightInner, image=pausePhoto) 
+    stopButton = tk.Button(topRightInner, image=pausePhoto) 
     stopButton.grid(column=1,row=1, padx=10, pady= 10, ipadx=5, ipady=5)
 
     startImage = None
-    startButton = ttk.Button(topRightInner, image=playPhoto)
+    startButton = tk.Button(topRightInner, image=playPhoto)
     startButton.grid(column=2,row=1, padx=10, pady= 10, ipadx=5, ipady=5)
 
-    arrow3 = ttk.Button(topRightInner, image=arrowPhoto4) #west
+    arrow3 = tk.Button(topRightInner, image=arrowPhoto4) #west
     arrow3.grid(column=3,row=1, padx=10, pady= 10, ipadx=5, ipady=5)
 
-    arrow4 = ttk.Button(topRightInner, image=arrowPhoto2)
+    arrow4 = tk.Button(topRightInner, image=arrowPhoto2)
     arrow4.grid(columnspan=2,column=1,row=2, padx=10, pady= 10, ipadx=5, ipady=5) #south
 
     #column and row configurations for sizing again :(
