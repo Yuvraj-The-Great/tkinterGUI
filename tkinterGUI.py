@@ -192,24 +192,24 @@ def startGUI():
         playRaw = playRaw.resize((65,65))
         playPhoto = ImageTk.PhotoImage(playRaw)
 
-    arrow1 = tk.Button(topRightInner,image=arrowPhoto1) #north
+    arrow1 = tk.Button(topRightInner,command=up,image=arrowPhoto1) #north
     arrow1.grid(columnspan=2,column=1,row=0, padx=10, pady= 10, ipadx=5, ipady=5)
 
-    arrow2 = tk.Button(topRightInner,image=arrowPhoto3) #east
+    arrow2 = tk.Button(topRightInner, command=right, image=arrowPhoto3) #east
     arrow2.grid(column=0,row=1, padx=10, pady= 10, ipadx=5, ipady=5)
 
     stopImage = None
-    stopButton = tk.Button(topRightInner, image=pausePhoto) 
+    stopButton = tk.Button(topRightInner, command=stop, image=pausePhoto) 
     stopButton.grid(column=1,row=1, padx=10, pady= 10, ipadx=5, ipady=5)
 
     startImage = None
-    startButton = tk.Button(topRightInner, image=playPhoto)
+    startButton = tk.Button(topRightInner, command=play, image=playPhoto)
     startButton.grid(column=2,row=1, padx=10, pady= 10, ipadx=5, ipady=5)
 
-    arrow3 = tk.Button(topRightInner, image=arrowPhoto4) #west
+    arrow3 = tk.Button(topRightInner, command=left,image=arrowPhoto4) #west
     arrow3.grid(column=3,row=1, padx=10, pady= 10, ipadx=5, ipady=5)
 
-    arrow4 = tk.Button(topRightInner, image=arrowPhoto2)
+    arrow4 = tk.Button(topRightInner, command=down,image=arrowPhoto2)
     arrow4.grid(columnspan=2,column=1,row=2, padx=10, pady= 10, ipadx=5, ipady=5) #south
 
     #column and row configurations for sizing again :(
