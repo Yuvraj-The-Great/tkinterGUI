@@ -7,6 +7,8 @@
 #https://pillow.readthedocs.io/en/stable/reference/Image.html
 #https://pillow.readthedocs.io/en/stable/reference/ImageTk.html Works with tkinter
 
+import requestFunctions
+
 def startGUI():
 
     from PIL import Image #for resizing and rotating arrow images to meet test
