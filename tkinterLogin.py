@@ -37,8 +37,8 @@ def logInGUI():
 
             if rows:
                 logInWindow.destroy()
-                root.destroy()
                 status = True
+                print("Status set to True.")
 
             if rows == False:
                 messagebox.showerror(
@@ -122,6 +122,7 @@ def logInGUI():
     sign.pack()
 
     if status == True:
+        print("Returned true.")
         return True
 
     root.mainloop()
