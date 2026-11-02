@@ -20,7 +20,8 @@ def passwordCheck(username,password):
 
     if rows:
         #checks if user input matches db hash
-        return bcrypt.checkpw(password.encode("utf-8"), rows[0])
+        print(bcrypt.checkpw(password.encode("utf-8"), rows[0]))
+        return (bcrypt.checkpw(password.encode("utf-8"), rows[0]))
 
     else:
         return False
