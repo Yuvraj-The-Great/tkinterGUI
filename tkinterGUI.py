@@ -7,7 +7,7 @@
 #https://pillow.readthedocs.io/en/stable/reference/Image.html
 #https://pillow.readthedocs.io/en/stable/reference/ImageTk.html Works with tkinter
 
-import requestFunctions
+from requestFunctions import *
 
 def startGUI():
 
