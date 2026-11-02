@@ -23,14 +23,6 @@ def logInGUI():
 
     status = False
     
-    # database connections
-    connection = sqlite3.connect("users.db")
-    cursor = connection.cursor()
-    
-    # database verification
-    cursor.execute(
-        "CREATE TABLE IF NOT EXISTS users (userID INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT)")
-    
     # tkinter login window
     root = tk.Tk()
     root.title("Login Screen")
