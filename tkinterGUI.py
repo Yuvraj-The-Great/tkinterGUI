@@ -164,7 +164,7 @@ def startGUI():
 
     #arrow photo resizing and rotating with pillow
     arrowImage = None 
-    with Image.open("arrow.png") as arrowRaw:
+    with Image.open("images/arrow.png") as arrowRaw:
         arrowImage = arrowRaw.resize((70,50)) 
 
         #north south east west
@@ -184,11 +184,11 @@ def startGUI():
     pausePhoto = None
     playPhoto = None
 
-    with Image.open("pause_button.png") as pauseRaw:
+    with Image.open("images/pause_button.png") as pauseRaw:
         pauseRaw = pauseRaw.resize((65,65))
         pausePhoto = ImageTk.PhotoImage(pauseRaw)
 
-    with Image.open("play_button.png") as playRaw:
+    with Image.open("images/play_button.png") as playRaw:
         playRaw = playRaw.resize((65,65))
         playPhoto = ImageTk.PhotoImage(playRaw)
 
