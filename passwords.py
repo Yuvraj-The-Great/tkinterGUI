@@ -1,3 +1,0 @@
-#hashing library
-import bcrypt
-
