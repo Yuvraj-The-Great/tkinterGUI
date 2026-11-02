@@ -15,7 +15,7 @@ def logInGUI():
     from functools import partial
 
     # importing password checker
-    from passwordChecker import passwordCheck
+    from passwordChecker import passwordCheck, passwordInsert
 
     status = False
 
@@ -77,19 +77,14 @@ def logInGUI():
             username = username.get()
             password = password.get()
 
-            check = cursor.execute(
-                "SELECT * FROM users WHERE username=?", (username,))
+            insertOperation = passwordInsert(username,password)
 
-            if (check is not None):
-                cursor.execute(
-                    "INSERT INTO users(username,password) VALUES (?,?)", (username, password))
-                connection.commit()
+            if (insertOperation):
                 messagebox.showinfo("Done", "New Account Created!")
-
                 signUpWindow.destroy()
+                
             else:
-                messagebox.showerror(
-                    "Username Errors", "Username already exists!")
+                messagebox.showerror("Username Error", "Username already exists!")
                 signUpWindow.destroy()
 
         signUpWindow = tk.Toplevel(root)
