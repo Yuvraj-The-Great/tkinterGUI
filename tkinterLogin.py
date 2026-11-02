@@ -119,7 +119,7 @@ def logInGUI():
     sign.pack()
 
     root.mainloop()
-    print("Status: " + status)
+    print("Status: " + str(status))
 
     if status == True:
         print("Returned true.")
