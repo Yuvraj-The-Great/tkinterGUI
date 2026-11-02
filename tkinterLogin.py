@@ -14,9 +14,6 @@ def logInGUI():
     
     # command arguments for button
     from functools import partial
-    
-    # importing the tkinter GUI
-    from tkinterGUI import startGUI
 
     #importing password checker
     from passwordChecker import *
@@ -36,17 +33,15 @@ def logInGUI():
         def logCheck(username, password):
             username = username.get()
             password = password.get()
-    
-            data = cursor.execute(
-                "SELECT * FROM users WHERE username=? and password=?", (username, password))
-            rows = data.fetchone()
+
+            rows = passwordCheck(username,password)
     
             if rows:
                 logInWindow.destroy()
                 root.destroy()
-                startGUI()
+                status = True
     
-            else:
+            if rows == False:
                 messagebox.showerror(
                     "Error", "Login Failed, Create a New Account!")
                 logInWindow.destroy()
@@ -125,6 +120,9 @@ def logInGUI():
     
     sign = ttk.Button(main, text="Create Account", command=signUp)
     sign.pack()
-    
+
+    if status == True:
+        return True
+
     root.mainloop()
     logIn()
