@@ -1,3 +1,4 @@
+import sqlite3
 import bcrypt
 
 # database connections
@@ -9,13 +10,16 @@ cursor.execute(
     "CREATE TABLE IF NOT EXISTS users (userID INTEGER PRIMARY KEY AUTOINCREMENT, username TEXT, password TEXT)"
 )
 
-def passwordCheck():
+
+def passwordCheck(username,password):
     data = cursor.execute(
-        "SELECT * FROM users WHERE username=? and password=?", (username, password))
+        "SELECT * FROM users WHERE username=? and password=?", (username, password)
+    )
+    
     rows = data.fetchone()
 
     if rows:
-      return rows
+        return rows
 
-    else: 
-      return False
+    else:
+        return False

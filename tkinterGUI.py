@@ -132,7 +132,6 @@ def startGUI():
 
     root.grid_columnconfigure(0, weight=1)
     root.grid_columnconfigure(1, weight=1)
-    1
 
     #mainloop must be at end
     root.mainloop()
