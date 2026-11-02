@@ -30,6 +30,7 @@ def logInGUI():
 
     def logIn():
         def logCheck(username, password):
+            global status
             username = username.get()
             password = password.get()
 
@@ -37,6 +38,7 @@ def logInGUI():
 
             if rows:
                 logInWindow.destroy()
+                root.destroy()
                 status = True
                 print("Status set to True.")
 
@@ -121,9 +123,9 @@ def logInGUI():
     sign = ttk.Button(main, text="Create Account", command=signUp)
     sign.pack()
 
+    root.mainloop()
+    print(status)
+
     if status == True:
         print("Returned true.")
         return True
-
-    root.mainloop()
-    logIn()
