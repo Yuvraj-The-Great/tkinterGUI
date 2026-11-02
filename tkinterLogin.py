@@ -30,7 +30,7 @@ def logInGUI():
 
     def logIn():
         def logCheck(username, password):
-            global status
+            nonlocal status
             username = username.get()
             password = password.get()
 
@@ -124,7 +124,7 @@ def logInGUI():
     sign.pack()
 
     root.mainloop()
-    print(status)
+    print("Status: " + status)
 
     if status == True:
         print("Returned true.")
